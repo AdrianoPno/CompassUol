@@ -1,20 +1,18 @@
-import express, { Express } from 'express';
-import bodyParser from 'body-parser';
-import tutorRoutes from './routes/tutorRoutes';
-import petRouter from './routes/petRoutes';
+import express from 'express';
+import configureMiddlewares from './shared/middlewares/middlewares';
+import tutorRouter from './shared/middlewares/tutorRoutes';
+import petRouter from './shared/middlewares/petRoutes';
 
+const app = express();
 
-const app: Express = express();
+// Configuração dos middlewares
+configureMiddlewares(app);
 
-app.use(bodyParser.json());
+// Rotas
+app.use('/api', tutorRouter); // Altere a rota base para '/api'
+app.use('/api', petRouter); // Altere a rota base para '/api'
 
-// Configurar o roteador para as rotas de tutor e pet
-app.use('/api', tutorRoutes);
-app.use('/api', petRouter);
-
-
-const PORT: number = 3000; // Escolha uma porta disponível
-
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
 });
