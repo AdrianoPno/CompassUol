@@ -1,3 +1,5 @@
+<p><strong>Adriano Dias - adriano.silva.pb@compasso.com.br</strong></p>
+
 <h1>Tutores e Pets - Instruções para Teste</h1>
 <p>Este é um microserviço desenvolvido para gerenciar tutores e seus respectivos pets. Abaixo estão as instruções para testar as rotas deste microserviço usando o aplicativo Insomnia:</p>
 
@@ -69,4 +71,11 @@
 }</code></pre>
 
 <p><strong>h) Exclusão de um Pet (DELETE):</strong></p>
-<p><span style="color:red">Faça uma requisição DELETE para a rota <code>/api/pet/:petId/tutor/:tutorId</code>, substituindo <code>:petId</code> pelo ID do
+<p><span style="color:red">Faça uma requisição DELETE para a rota <code>/api/pet/:petId/tutor/:tutorId</code>, substituindo <code>:petId</code> pelo ID do pet que você deseja excluir e <code>:tutorId</code> pelo ID do tutor ao qual o pet está associado.</span></p>
+<pre><code><span style="color:red">DELETE</span> http://localhost:3000/api/pet/1/tutor/1</code></pre>
+<p>Certifique-se de que o pet com o ID informado existe e está associado ao tutor com o ID informado. Caso contrário, você receberá uma resposta indicando que o pet ou tutor não foram encontrados.</p>
+<p>Execute a requisição e verifique a resposta para confirmar que o pet foi excluído com sucesso.</p>
+
+<p>Lembre-se de atualizar o ambiente do Insomnia com as informações do servidor (como a URL base) e quaisquer outras variáveis necessárias para a execução das requisições.</p>
+
+
