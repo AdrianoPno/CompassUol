@@ -43,7 +43,7 @@ tutorRouter.post('/tutor', (req: Request, res: Response) => {
 
     tutors.push(newTutor);
 
-    // Adicione o console.log para verificar o novo tutor
+    // Console.log para verificar o novo tutor
     console.log('Novo tutor adicionado:', newTutor);
 
     return res.status(201).json(newTutor);
