@@ -17,7 +17,23 @@ export const createTutor = async (req: Request, res: Response) => {
 export const getTutors = async (req: Request, res: Response) => {
   try {
     const tutors = await Tutor.find()
-    res.status(200).json(tutors)
+
+    // Mapeie os tutores para retornar os campos relevantes
+    const tutorsWithPets = await Promise.all(
+      tutors.map(async (tutor) => {
+        const tutorWithPets = tutor.toObject()
+
+        // Busque os pets associados a este tutor
+        const pets = await Pet.find({ tutor: tutor._id })
+
+        // Adicione os pets associados ao objeto do tutor
+        tutorWithPets.pets = pets.map((pet) => pet.toObject()) // Converta os pets em objetos simples
+
+        return tutorWithPets
+      }),
+    )
+
+    res.status(200).json(tutorsWithPets)
   } catch (error) {
     console.error("Error fetching tutors:", error)
     res.status(500).json({ error: "Error fetching tutors." })

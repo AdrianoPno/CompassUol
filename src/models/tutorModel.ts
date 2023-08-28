@@ -13,7 +13,7 @@ const tutorSchema = new mongoose.Schema<Tutor>({
   name: {
     type: String,
     required: true,
-    trim: true, // Remove espaços em branco extras no início e no final
+    trim: true,
   },
   phone: {
     type: String,
