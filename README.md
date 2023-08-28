@@ -1,8 +1,8 @@
 </head>
 <body>
   <header>
-    <h1>CompassUol API - Guia de Uso e Testes</h1>
-    <p>Um guia prático para utilizar a API VetClinic e realizar testes usando o Insomnia.</p>
+    <h1>CompassUol<br> Vet Clinic API - Guia de Uso e Testes</h1>
+    <p>Um guia prático para utilizar a VetClinic API e realizar testes usando o Insomnia.</p>
   </header>
 
   <div class="section">
