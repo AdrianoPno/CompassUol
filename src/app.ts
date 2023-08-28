@@ -1,27 +1,20 @@
 import dotenv from "dotenv"
-import mongoose from "mongoose"
-import express from "express" // Correção na importação
+import express from "express"
 import configureMiddlewares from "./shared/middlewares/middlewares"
+import connectToDatabase from "./config/database"
+import { router as tutorRoutes } from "./routes/tutorRoutes"
 
-dotenv.config()
 const app = express()
+
 configureMiddlewares(app)
+dotenv.config()
+app.use("/api", tutorRoutes)
 
-const { MONGO_URL } = process.env
+//conecta ao bando
+connectToDatabase()
 
-if (!MONGO_URL) {
-  throw new Error("DB_URL not specified in the .env file")
-}
+const port = process.env.PORT || 3000
 
-mongoose
-  .connect(MONGO_URL)
-  .then(() => {
-    console.log("Connected to MongoDB")
-  })
-  .catch((err) => {
-    console.log("Connection error:", err)
-  })
-
-const db = mongoose.connection
-
-export default db
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`)
+})
